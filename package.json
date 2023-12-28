@@ -1,0 +1,10 @@
+{
+  "name": "taskdirector",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start-app": "concurrently \"npm run dev --prefix backend\" \"npm start --prefix frontend\""
+  },
+  "author": "",
+  "license": "ISC"
+}

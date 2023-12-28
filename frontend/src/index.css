@@ -1,0 +1,398 @@
+/* Import the Nunito font */
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+
+
+/* Define theme colors */
+:root {
+  --primary-color: #6c544f;
+  /* Saddle Brown */
+  --secondary-color: #a0522d;
+  /* Sienna */
+  --text-color: #3e2723;
+  /* Brown */
+  --background-color: #f5f5f5;
+  /* Dark Gray for the background */
+  --link-color: #fff;
+  /* brown grey */
+  --brown-grey: #8b5f3fa2;
+  /* White */
+  --BGCOLOR: #707070e0;
+  /* Light coffee background */
+  --BORDER-COLOR: #333;
+  /* Border color */
+}
+
+/* Apply the Nunito font to the entire body */
+body {
+  font-family: 'Nunito', sans-serif;
+  min-height: 100vh;
+  background-color: var(--background-color);
+}
+
+/* For WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 4px; /* Set the width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--brown-grey); /* Set the color of the scrollbar thumb to the secondary color */
+  border-radius: 2px; /* Set the border radius of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--background-color); /* Set the color of the scrollbar track */
+}
+
+/* For Firefox */
+html {
+  scrollbar-color: var(--secondary-color) var(--background-color); /* Set the color of the scrollbar thumb and track */
+  scrollbar-width: thin; /* Set the width of the scrollbar */
+}
+
+/* Add more specific styling for Firefox thumb if needed */
+html:defined(scrollbar-color) {
+  scrollbar-color: var(--secondary-color) var(--background-color);
+}
+
+
+/* Style the error message */
+.errmsg {
+  color: #ff0000;
+  margin-bottom: 2vh;
+}
+.icon {
+  margin-right: 20px;
+}
+.offscreen {
+  display: none;  
+}
+
+/* Style the top information */
+.top-info {
+  display: flex;
+  margin-bottom: 4vh;
+}
+
+.info-icon {
+  margin-right: 1vh;
+  color: var(--secondary-color);
+}
+
+.tooltiptext {
+  margin-left: 1vh;
+  color: var(--secondary-color);
+  font-style: italic;
+}
+
+/* Style the form container */
+.form {
+  max-width: 40vh;
+  margin: 0 auto;
+  padding: 4vh;
+  background-color: #f8f8f8;
+  border-radius: 2vh;
+  box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
+}
+
+/* Style the form title */
+.form h2 {
+  text-align: center;
+  color: var(--text-color);
+  font-size: 2.5vh;
+}
+
+/* Style the form labels */
+.form__label {
+  display: block;
+  margin-bottom: 1vh;
+}
+
+/* Style the input fields */
+.form__input {
+  width: 100%;
+  padding: 2vh;
+  margin: 2vh 0;
+  box-sizing: border-box;
+  border: 0.5vh solid #ccc;
+  border-radius: 1vh;
+}
+
+/* Style incomplete inputs */
+.form__input--incomplete {
+  border-color: #e74c3c;
+}
+
+/* Style the submit button */
+.icon-button {
+  padding: 2vh;
+  background-color: var(--secondary-color);
+  color: #fff;
+  border: none;
+  border-radius: 1vh;
+  cursor: pointer;
+}
+
+
+/* DASH HEADER, CONTAINER & FOOTER */
+
+.dash-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: var(--BGCOLOR);
+  padding: 0 0.5vh;
+  border-bottom: 0.1vh solid var(--BORDER-COLOR);
+}
+
+.subtitle {
+  color: grey;
+}
+
+.dash-header__container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dash-header__container--small {
+  max-width: 8vh;
+}
+
+.dash-header__nav {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  gap: 0.1vh;
+}
+
+.dash-container {
+  padding: 0.75vh 0.5vh 0.5vh;
+  flex-grow: 1;
+}
+
+.dash-footer {
+  font-size: 1.6vh;
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  background-color: var(--BGCOLOR);
+  padding: 0.5vh;
+  border-top: 0.1vh solid var(--BORDER-COLOR);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  gap: 1vh;
+}
+
+.dash-footer__button {
+  font-size: 1.6vh;
+  width: auto;
+  height: auto;
+}
+
+.dash-header__title {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.public {
+  max-width: 100vw; 
+}
+
+.wrapper {
+  display: grid;
+  place-items: center;
+}
+
+.typing-demo {
+  margin-top: 20vh;
+  color: var(--text-color);
+  width: 25ch;
+  animation: typing 2s steps(22), blink 0.5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.3vh solid;
+  font-family: monospace;
+  font-size: 4vh;
+}
+
+.wrapper .sub {
+  color: rgba(62, 39, 35, 0.719);
+}
+
+.wrapper .subtitle {
+  color: var(--text-color);
+  text-align: center;
+  /* Set a maximum width for better responsiveness */
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1vh;
+}
+
+.public__button {
+  padding: 1vh;
+  background-color: var(--text-color);
+  color: #fff;
+  border-radius: 0.4vh;
+  text-decoration: none;
+  margin: 0.1vh;
+  margin-right: 2vh;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+
+/* Login */
+.form__checkbox {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px ;
+  color: var(--text-color);
+  font-size: 1.8vh;
+}
+
+.form__checkbox-box {
+  margin-right: 8px;
+  appearance: none; /* Hide default checkbox */
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--text-color);
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
+}
+
+/* Style the checkbox */
+.form__checkbox-box:checked {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+/* Style the checkmark inside the checkbox */
+.form__checkbox-box:checked::after {
+  content: '\2714'; /* Unicode character for checkmark */
+  font-size: 14px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Style the text next to the checkbox */
+.form__checkbox span {
+  vertical-align: middle;
+}
+
+.two__button {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.back__home-link {
+  text-decoration: none;
+  color: var(--link-color);
+}
+
+
+/* Welcome page */
+
+.welcome {
+  text-align: center;
+  padding: 5vh;
+  background-color: var(--BGCOLOR);
+  border-radius: 2vh;
+  box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
+  max-width: 60vh;
+  margin: 0 auto;
+}
+
+.welcome p {
+  color: #555;
+  font-size: 1.6vh;
+}
+
+.welcome h1 {
+  color: var(--text-color);
+  font-size: 2.8vh;
+  margin-bottom: 2vh;
+}
+
+.welcome a {
+  display: block;
+  margin: 1vh auto;
+  padding: 1.2vh 2vh;
+  text-decoration: none;
+  color: #fff;
+  background-color: var(--primary-color);
+  border-radius: 1vh;
+  font-size: 1.8vh;
+  transition: background-color 0.3s ease;
+}
+
+.welcome a:hover {
+  background-color: var(--secondary-color);
+}
+
+.welcome a.isManagerAdmin {
+  background-color: #e74c3c;
+}
+
+.welcome a.isManagerAdmin:hover {
+  background-color: #c0392b;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Add responsiveness for smaller screens */
+@media only screen and (max-width: 600px) {
+  .typing-demo {
+    margin-top: 10vh;
+    font-size: 3vh;
+  }
+
+  .form {
+    max-width: 100%;
+    padding: 4vh;
+  }
+
+
+  .public {
+    max-width: 95vw; 
+  }
+  
+  
+}
