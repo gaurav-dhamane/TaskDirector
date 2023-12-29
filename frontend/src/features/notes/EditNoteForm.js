@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import useAuth from "../../hooks/useAuth"
 
+
 const EditNoteForm = ({ note, users }) => {
     const {isAdmin, isManager} = useAuth()
 

@@ -48,27 +48,29 @@ const PersistLogin = () => {
     }, [])
 
     let content
-    if (!persist){
+    if (!persist) {
         console.log('not persist')
-        content = <Outlet/>
+        content = <Outlet />
     } else if (isLoading) {
         console.log('loading')
         content = <PulseLoader color={"#FFF"} />
     } else if (isError) {
         console.log('error')
         content = (
-            <p className="errmsg">
-                {`${error?.data?.message} - `}
-                <Link to= "/login">Please login again</Link>
-            </p>
+            <div className="error-container">
+                <p className="errmsg">
+                    {`${error?.data?.message} - `}
+                    <Link to="/login">Please login again</Link>
+                </p>
+            </div>
         )
     } else if (isSuccess && trueSuccess) {
         console.log('success')
-        content = <Outlet/>
+        content = <Outlet />
     } else if (token && isUninitialized) {
         console.log('token and uninit')
         console.log(isUninitialized)
-        content = <Outlet/>
+        content = <Outlet />
     }
 
     return content

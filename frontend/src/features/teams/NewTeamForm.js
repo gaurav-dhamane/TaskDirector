@@ -7,8 +7,9 @@ import { faInfoCircle, faExclamationTriangle } from '@fortawesome/free-solid-svg
 
 
 
-const TEAM_REGEX = /^[A-z]{3,20}$/
-const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/
+const TEAM_REGEX = /^[a-zA-Z0-9_-]{3,20}$/
+
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/
 
 const NewTeamForm = () => {
     useTitle('taskdirector: New Team')
@@ -75,7 +76,7 @@ const NewTeamForm = () => {
                     </span>
                 </div>
                 <p className={errClass}>
-                    <FontAwesomeIcon icon={faExclamationTriangle}  /> 
+                    <FontAwesomeIcon icon={faExclamationTriangle} />
                     <span> </span>
                     {error?.data?.message}</p>
                 <label className="form__label" htmlFor="teamname">
@@ -100,6 +101,18 @@ const NewTeamForm = () => {
                     value={password}
                     onChange={onPasswordChanged}
                 />
+
+                {/* Password requirements section */}
+                <div className="password-requirements">
+                    <p>Password should be</p>
+                    <ul>
+                        <li>8-20 characters long</li>
+                        <li>at least one lowercase letter (a-z)</li>
+                        <li>at least one uppercase letter (A-Z)</li>
+                        <li>at least one digit (0-9)</li>
+                        <li>at least one of @$!%*?&</li>
+                    </ul>
+                </div>
 
                 <button
                     className="icon-button"

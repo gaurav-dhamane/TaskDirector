@@ -5,8 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { ROLES } from "../../config/roles"
 
-const USER_REGEX = /^[A-Za-z]{3,20}$/
-const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/
+
+const USER_REGEX = /^[a-zA-Z0-9_-]{3,20}$/
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/
 
 const EditUserForm = ({ user }) => {
 
@@ -103,12 +104,12 @@ const EditUserForm = ({ user }) => {
 
     const content = (
         <>
-            <p className={errClass}>{errContent}</p>
+            
 
             <form className="form" onSubmit={e => e.preventDefault()}>
                 <div className="form__title-row">
                     <h2>Edit User</h2>
-                    <div className="form__action-buttons">
+                    <div className="two__button">
                         <button
                             className="icon-button"
                             title="Save"
@@ -126,8 +127,10 @@ const EditUserForm = ({ user }) => {
                         </button>
                     </div>
                 </div>
+
+                <p className={errClass}>{errContent}</p>
                 <label className="form__label" htmlFor="username">
-                    Username: <span className="nowrap">[3-20 letters]</span></label>
+                    Username:</label>
                 <input
                     className={`form__input ${validUserClass}`}
                     id="username"
@@ -139,7 +142,7 @@ const EditUserForm = ({ user }) => {
                 />
 
                 <label className="form__label" htmlFor="password">
-                    Password: <span className="nowrap">[empty = no change]</span> <span className="nowrap">[4-12 chars incl. !@#$%]</span></label>
+                    Password:</label>
                 <input
                     className={`form__input ${validPwdClass}`}
                     id="password"
@@ -147,22 +150,21 @@ const EditUserForm = ({ user }) => {
                     type="password"
                     value={password}
                     onChange={onPasswordChanged}
-                />
+                />  
 
-                <label className="form__label form__checkbox-container" htmlFor="user-active">
-                    ACTIVE:
+                <label htmlFor="user-active" className="form__checkbox">
                     <input
-                        className="form__checkbox"
-                        id="user-active"
-                        name="user-active"
                         type="checkbox"
-                        checked={active}
+                        className="form__checkbox-box"
+                        id="user-active"
                         onChange={onActiveChanged}
+                        checked={active}
                     />
+                    Active
                 </label>
 
                 <label className="form__label" htmlFor="roles">
-                    ASSIGNED ROLES:</label>
+                    Assigned roles:</label>
                 <select
                     id="roles"
                     name="roles"

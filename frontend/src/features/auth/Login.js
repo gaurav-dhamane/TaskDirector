@@ -121,7 +121,7 @@ const Login = () => {
                         Trust This Device
                     </label>
                     <section className='two__button'>
-                        <button className='icon-button' >Sign In</button>
+                        <button className='text-button' >Sign In</button>
                     </section>
 
                 </form>

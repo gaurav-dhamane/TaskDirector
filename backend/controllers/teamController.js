@@ -5,22 +5,6 @@ require('dotenv').config()
 // @desc Get all teams
 // @route Get /teams
 // @access Private
-const getAllTeams = async (req, res) => {
-    const { teamname } = req.body;
-    if (teamname) {
-        const team = await Team.findOne({ teamname }).select('-password').lean().exec();
-        if (!team) {
-            return res.status(400).json({ message: 'No Teams found' })
-        }
-        res.json(team);
-    }
-    //
-    const teams = await Team.find().select('-password').lean();
-    if (!teams?.length) {
-        return res.status(400).json({ message: 'No Teams found' })
-    }
-    res.json(teams);
-};
 
 
 
@@ -83,7 +67,7 @@ const updateTeam = async (req, res) => {
     const team = await Team.findById(id).exec();
 
     if (!team) {
-        return res.status(400).json({ message: "Team not found" })
+        return res.status(400).json({ message: "Team Not Found" })
     }
 
     // Check for duplicate
@@ -127,7 +111,7 @@ const deleteTeam = async (req, res) => {
     const team = await Team.findById(id).exec();
 
     if (!team) {
-        return res.status(400).json({ message: 'Team not found' });
+        return res.status(400).json({ message: "Team Not Found"});
     }
 
     const { teamname, _id } = team;
@@ -140,7 +124,6 @@ const deleteTeam = async (req, res) => {
 }
 
 module.exports = {
-    getAllTeams,
     createNewTeam,
     updateTeam,
     deleteTeam

@@ -14,7 +14,7 @@ const getAllNotes = async (req, res) => {
     const team = await Team.findById(teamId);
 
     if (!team) {
-      return res.status(404).json({ message: 'Team not found' });
+      return res.status(404).json({ message: "Team Not Found"});
     }
 
     // Get the note IDs associated with the team
@@ -95,7 +95,6 @@ const createNewNote = async (req, res) => {
 const updateNote = async (req, res) => {
 
   const { id, user, title, text, completed } = req.body
-  console.log(completed)
 
   // Confirm data
   if (!id || !user || !title || !text || typeof completed !== 'boolean') {

@@ -7,8 +7,8 @@ import { ROLES } from "../../config/roles"
 import useTitle from "../../hooks/useTitle"
 import useAuth from "../../hooks/useAuth"
 
-const USER_REGEX = /^[A-z]{3,20}$/
-const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/
+const USER_REGEX = /^[a-zA-Z0-9_-]{3,20}$/
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/
 
 const NewUserForm = () => {
     useTitle('taskdirector: New User')
