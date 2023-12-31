@@ -52,7 +52,7 @@ const NewNoteForm = ({ users }) => {
     const validTextClass = !text ? "border-red-500" : '';
 
     return (
-        <section className="p-4 bg-gradient-to-r from-indigo-300 from-10% via-sky-300 via-30% to-emerald-300 to-90%">
+        <section className="p-4 min-h-screen bg-gradient-to-r from-indigo-300 from-10% via-sky-300 via-30% to-emerald-300 to-90%">
             <p className={`text-red-500 ${errClass}`}>{error?.data?.message}</p>
 
             <form className="w-full max-w-md mx-auto mt-4 bg-gradient-to-r from-indigo-300 via-sky-200 to-emerald-200 text-purple-900 p-4 md:p-8 rounded-md shadow-md" onSubmit={onSaveNoteClicked}>
