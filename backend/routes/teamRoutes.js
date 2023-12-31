@@ -3,7 +3,7 @@ const router = express.Router()
 const teamController = require('../controllers/teamController')
 const verifyJWT = require('../middleware/verifyJWT')
 
-// router.use(verifyJWT)
+router.use(verifyJWT)
 
 router.route('/')
     .get(teamController.getAllTeams)

@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const noteSchema = new mongoose.Schema(
     {
         ticket: {
-            type: Number, // Assuming ticket is a number
+            type: Number,
           },
         user: {
             type: mongoose.Schema.Types.ObjectId,
