@@ -56,7 +56,7 @@ const NewTeamForm = () => {
         <div className="bg-gradient-to-r from-indigo-300 from-10% via-sky-300 via-30% to-emerald-300 to-90% min-h-screen flex items-center justify-center">
             <form className="w-full max-w-md mx-auto mt-10 bg-gradient-to-r from-indigo-300 via-sky-200 to-emerald-200 text-emerald-900 p-4 md:p-12 rounded-md shadow-md" onSubmit={onSaveTeamClicked}>
                 <h2 className="text-2xl mb-6 font-bold">New Team</h2>
-                <div className="mb-4">
+                <div className="mb-4 text-red-500">
                     <FontAwesomeIcon icon={faInfoCircle} className="info-icon" />
                     <span className="tooltiptext">
                         After registering, log in with <b>'{teamname}-admin'</b> as the username, and use the same password you entered during registration.
