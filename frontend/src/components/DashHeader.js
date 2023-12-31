@@ -49,7 +49,7 @@ const DashHeader = () => {
     if (NOTES_REGEX.test(pathname)) {
         newNoteButton = (
             <button
-                className="icon-button"
+                className="icon-button text-emerald-800 text-2xl"
                 title="New Note"
                 onClick={onNewNoteClicked}
             >
@@ -62,7 +62,7 @@ const DashHeader = () => {
     if (USERS_REGEX.test(pathname)) {
         newUserButton = (
             <button
-                className="icon-button"
+                className="icon-button text-emerald-800 text-2xl"
                 title="New User"
                 onClick={onNewUserClicked}
             >
@@ -76,7 +76,7 @@ const DashHeader = () => {
         if (!USERS_REGEX.test(pathname) && pathname.includes('/dash')) {
             userButton = (
                 <button
-                    className="icon-button"
+                    className="icon-button text-emerald-800 text-2xl"
                     title="Users"
                     onClick={onUsersClicked}
                 >
@@ -90,8 +90,8 @@ const DashHeader = () => {
     if (!NOTES_REGEX.test(pathname) && pathname.includes('/dash')) {
         notesButton = (
             <button
-                className="icon-button"
-                title="Notes"
+                className="icon-button text-emerald-800 text-2xl"
+                title="Tasks"
                 onClick={onNotesClicked}
             >
                 <FontAwesomeIcon icon={faFilePen} />
@@ -101,7 +101,7 @@ const DashHeader = () => {
 
     const logoutButton = (
         <button
-            className="icon-button"
+            className="icon-button text-emerald-800 text-2xl"
             title="Logout"
             onClick={sendLogout}
         >
@@ -130,16 +130,18 @@ const DashHeader = () => {
         <>
             <p className={errClass}>{error?.data?.message}</p>
 
-            <header className="dash-header">
+            <header className="dash-header sticky top-0 z-10 p-0.5 bg-gradient-to-r from-indigo-400 from-10% via-sky-400 via-30% to-emerald-400 to-90% ">
                 <div className={`dash-header__container ${dashClass}`}>
-                    <Link to="/dash" className="dash-header__title">
-                        <h1 >TaskDirector</h1>
+                    <Link to="/dash" className="no-underline m-1 text-black">
+                        <p className='title text-3xl '><b>Task Director</b></p>
                     </Link>
-                    <nav className="dash-header__nav">
+                    <nav className="flex flex-row justify-end mr-6 gap-8">
                         {buttonContent}
                     </nav>
                 </div>
             </header>
+
+
         </>
     )
 

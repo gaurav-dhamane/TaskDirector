@@ -5,7 +5,25 @@ require('dotenv').config()
 // @desc Get all teams
 // @route Get /teams
 // @access Private
+const getAllTeams = async (req, res) => {
+    // Get all teams from MongoDB
+    const teams = await Team.find().lean()
 
+    // If no teams 
+    if (!teams?.length) {
+        return res.status(400).json({ message: 'No teams found' })
+    }
+
+    // Add username to each team before sending the response 
+    // See Promise.all with map() here: https://youtu.be/4lqJBBEpjRE 
+    // You could also do this with a for...of loop
+    const teamsWithUser = await Promise.all(teams.map(async (team) => {
+        const user = await User.findById(team.user).lean().exec()
+        return { ...team, username: user.username }
+    }))
+
+    res.json(teamsWithUser)
+}
 
 
 // @desc create new teams
@@ -15,7 +33,7 @@ const createNewTeam = async (req, res) => {
     const { teamname, password, users } = req.body;
 
     //confirm data
-    if (!teamname || !password) {
+    if (!teamname || !password ) {
         return res.status(400).json({ message: 'All fields are required' });
     }
     // Check for duplicate
@@ -124,6 +142,7 @@ const deleteTeam = async (req, res) => {
 }
 
 module.exports = {
+    getAllTeams,
     createNewTeam,
     updateTeam,
     deleteTeam

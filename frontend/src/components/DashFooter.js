@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faHouse } from "@fortawesome/free-solid-svg-icons"
+import { faHouse, faUserCircle, faCircleInfo } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate, useLocation } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
-
+ 
 const DashFooter = () => {
 
     const { username, status } = useAuth()
@@ -16,7 +16,7 @@ const DashFooter = () => {
     if (pathname !== '/dash') {
         goHomeButton = (
             <button
-                className="dash-footer__button icon-button"
+                className="fixed bottom-0 left-0 z-10 ml-2 text-purple-950 text-xl"
                 title="Home"
                 onClick={onGoHomeClicked}
             >
@@ -26,10 +26,10 @@ const DashFooter = () => {
     }
 
     const content = (
-        <footer className="dash-footer">
+        <footer className="fixed bottom-0  left-0 right-0 z-10 flex flex-row justify-start pl-12 gap-4 bg-gradient-to-r from-indigo-400 from-10% via-sky-400 via-30% to-emerald-400 to-90% ">
             {goHomeButton}
-            <p>Current User: {username}</p>
-            <p>Status: {status} </p>
+            <p className=" text-xl text-purple-950"> <FontAwesomeIcon icon={faUserCircle} /> {username}</p>
+            <p className=" text-xl text-purple-950"> <FontAwesomeIcon icon={faCircleInfo} />  {status} </p>
         </footer>
     )
     return content

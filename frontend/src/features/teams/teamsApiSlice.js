@@ -40,7 +40,9 @@ export const teamsApiSlice = apiSlice.injectEndpoints({
                 body: {
                     ...initialTeamData,
                 }
+                
             }),
+            
             invalidatesTags: [
                 { type: 'Team', id: "LIST" }
             ]
