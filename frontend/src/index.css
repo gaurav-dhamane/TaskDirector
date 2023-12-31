@@ -208,11 +208,7 @@ body {
 
 @media screen and (max-width: 640px) {
     .column-container {
-        display: flexbox;
-        column-count: 2; 
-        column-gap: 2vw; 
-        max-width:100vw; 
-        height: 100vh;
+        column-count: 2;
     }
     .typing-demo {
         margin-top: 10vh;
