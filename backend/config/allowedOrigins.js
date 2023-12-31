@@ -1,6 +1,6 @@
 const allowedOrigins = [
-    'http://localhost:3000',
-    // 'https://url.com'
+    'https://taskdirector.onrender.com',
+    'https://www.taskdirector.onrender.com/
 ]
 
 module.exports = allowedOrigins;
