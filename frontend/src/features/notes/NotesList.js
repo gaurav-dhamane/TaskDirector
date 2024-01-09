@@ -23,7 +23,7 @@ const NotesList = () => {
   const { data: notes, isLoading, isSuccess, isError, error } = useGetNotesQuery(
     { teamId: team },
     {
-      pollingInterval: isPollingActive ? 1500 : null,
+      pollingInterval: isPollingActive ? 10000 : null,
       refetchOnFocus: true,
       refetchOnMountOrArgChange: true
     }
@@ -32,7 +32,7 @@ const NotesList = () => {
   const { data: usersData } = useGetUsersQuery(
     { username, teamId: team },
     {
-      pollingInterval: isPollingActive ? 1500 : null,
+      pollingInterval: isPollingActive ? 10000 : null,
       refetchOnFocus: true,
       refetchOnMountOrArgChange: true
     }
@@ -42,6 +42,7 @@ const NotesList = () => {
   const infoModalRef = useRef();
   const usersModalRef = useRef();
   const cardRef = useRef();
+  const navRef = useRef()
 
   const [showInfo, setShowInfo] = useState(false);
   const [showNav, setShowNav] = useState(false)
@@ -58,6 +59,7 @@ const NotesList = () => {
         setShowInfo(false);
       }
     };
+    
 
     const handleUsersModalOutsideClick = (event) => {
       if (usersModalRef.current && !usersModalRef.current.contains(event.target)) {
@@ -68,6 +70,9 @@ const NotesList = () => {
     const handleOutsideClick = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
         setAddUsersModal(false);
+      }
+      if (navRef.current && !navRef.current.contains(event.target)){
+        setShowNav(false)
       }
     };
 
@@ -80,7 +85,7 @@ const NotesList = () => {
       document.removeEventListener('mousedown', handleUsersModalOutsideClick);
       document.removeEventListener('mousedown', handleOutsideClick);
     };
-  }, [infoModalRef, usersModalRef, modalRef, setShowInfo, setShowUsersModal, setAddUsersModal]);
+  }, [infoModalRef, usersModalRef, modalRef, navRef, setShowInfo, setShowUsersModal, setAddUsersModal]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -124,9 +129,32 @@ const NotesList = () => {
     }
   }, [screenWidth]);
 
-  const buttonContent = <>
-    {/* ... (existing buttons) */}
-  </>;
+  const buttonContent = (
+    <>
+      <button
+        className="flex items-baseline gap-2 px-2 py-1 text-green-500 hover:underline hover:text-green-600 "
+        title="New Task"
+        onClick={(e) => {
+          handleNewNoteButtonClick(e)
+          setShowNav(false)
+        }}
+      >
+        <FontAwesomeIcon icon={faStickyNote} />
+        New Task
+      </button>
+      <button
+        className="flex items-baseline gap-2 px-2 py-1 text-green-500 hover:underline hover:text-green-600 "
+        title="Add User"
+        onClick={() => {
+          setAddUsersModal(!addUsersModal)
+          setShowNav(false)
+        }}
+      >
+        <FontAwesomeIcon icon={faUserPlus} />
+        Add User
+      </button>
+    </>
+  );
 
   let content;
 
@@ -181,7 +209,7 @@ const NotesList = () => {
         </button>
 
         {(screenWidth > 640 || showNav) && (
-          <div className="nav-bar fixed  flex flex-col pt-1 md:flex-row  gap-1 z-50 top-1 right-28  bg-slate-900 items-baseline ">
+          <div ref={navRef} className="nav-bar fixed  flex flex-col pt-1 md:flex-row  gap-1 z-50 top-1 right-28  bg-slate-900 items-baseline ">
             <button
               className={`text-green-500 text-xl hover:text-green-600 `}
               onClick={() => {
@@ -202,7 +230,8 @@ const NotesList = () => {
               <FontAwesomeIcon icon={faUsers} />
               Members
             </button>
-          </div>}
+          </div>
+        )}
 
         <div className="column-container p-4 md:p-8">
           {filteredNotes.map(note => (
@@ -246,7 +275,6 @@ const NotesList = () => {
         {showNewNoteModal && <NewNoteModal users={usersData} team={team} onClose={handleNewNoteModalClose} />}
         {addUsersModal && <AddUserModal teamId={team} onClose={handleClose} modalRef={modalRef}></AddUserModal>}
       </div>
-
     );
   }
 
