@@ -20,16 +20,6 @@ const NewNoteModal = ({ users, team, onClose }) => {
   const [text, setText] = useState('');
   const [assigned_to, setAssigned_to] = useState(usersData[0].id);
 
-  useEffect(() => {
-    if (isSuccess) {
-      setTitle('');
-      setText('');
-      setAssigned_to('');
-      navigate(`/dash/notes/?teamId=${team}`);
-      console.log(`/dash/notes/?teamId=${team}`)
-      onClose(); // Close the modal on success
-    }
-  }, [isSuccess, navigate, team, onClose]);
 
   const onTitleChanged = e => setTitle(e.target.value);
   const onTextChanged = e => setText(e.target.value);
