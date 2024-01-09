@@ -4,6 +4,7 @@ import PulseLoader from 'react-spinners/PulseLoader';
 import useAuth from "../../hooks/useAuth";
 import React, { useEffect, useRef, useState } from 'react';
 import NewTeamForm from "./NewTeamForm";
+import { Link } from "react-router-dom";
 
 const TeamsList = () => {
     const { username } = useAuth();
@@ -46,7 +47,7 @@ const TeamsList = () => {
     }, [messageModal]);
 
 
-    const { data: teams, isLoading, isSuccess } = useGetTeamsQuery(
+    const { data: teams, isLoading, isSuccess, isError , error} = useGetTeamsQuery(
         { username },
         {
             pollingInterval: 15000,
@@ -75,6 +76,8 @@ const TeamsList = () => {
     if (isLoading) {
         content = <PulseLoader color="#FFF" />;
     }
+
+    
 
 
 
@@ -113,7 +116,19 @@ const TeamsList = () => {
                 )}
             </div>
         );
-    } else {
+    } else if(isError && error?.status===401){
+        console.log(error)
+            content = <>
+            <div className="error-container ">
+                <p className="errmsg m-20 p-10">
+                    {`${error.data?.message} - `}
+                    <Link to="/login">Please login again</Link>
+                </p>
+            </div>
+            </>
+    }
+    
+    else {
         content = (
             <section className="min-h-screen bg-slate-800">
     <div className="flex flex-col items-center justify-center h-full p-20">
