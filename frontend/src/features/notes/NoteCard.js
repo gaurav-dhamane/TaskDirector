@@ -111,13 +111,12 @@ const NoteCard = ({ note, team, cardRef, updateNote }) => {
             <div className={`flex w-fit   gap-2 mb-2 md:mb-4`}>
               <input
                 className={`size-5 `}
-                id="note-completed"
-                name="completed"
+                id={`note-completed__${note.id.slice(3,7)}`}
                 type="checkbox"
                 checked={completed}
                 onChange={onCompletedChanged}
               />
-              <label className={`${noteTextClass1} italic`} htmlFor="note-completed">Done ?</label>
+              <label className={`${noteTextClass1} italic`} htmlFor={`note-completed__${note.id.slice(3,7)}`}>Done ?</label>
             </div>
 
             <button onClick={handleNoteDelete} className={`px-2 h-fit ${noteTextClass1}  rounded-sm `}>
@@ -128,6 +127,7 @@ const NoteCard = ({ note, team, cardRef, updateNote }) => {
 
           <div className="flex-grow">
             <input
+              name = "text__description"
               type="text"
               className={`text-2xl ${noteTextClass1} font-bold mb-2 focus:outline-none w-full ${noteStatusClass}`}
               ref={titleRef}
@@ -136,6 +136,7 @@ const NoteCard = ({ note, team, cardRef, updateNote }) => {
               readOnly={!isEditing}
             />
             <textarea
+              name='text__area'
               className={`max-h-screen resize-none p-2 overflow-auto ${noteStatusClass2} ${noteTextClass1} rounded-sm`}
               ref={textRef}
               value={editableContent.text}

@@ -101,12 +101,12 @@ const NewNoteModal = ({ users, team, onClose }) => {
           </div>
 
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="text">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="text__description">
               Text:
             </label>
             <textarea
               className={`form__input form__input--text min-h-32 appearance-none border ${validTextClass} rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline`}
-              id="text"
+              id="text__description"
               name="text"
               value={text}
               onChange={onTextChanged}
@@ -114,11 +114,11 @@ const NewNoteModal = ({ users, team, onClose }) => {
           </div>
 
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username_">
               Assign to:
             </label>
             <select
-              id="username"
+              id="username_"
               name="username"
               className="form__select appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
               value={assigned_to}

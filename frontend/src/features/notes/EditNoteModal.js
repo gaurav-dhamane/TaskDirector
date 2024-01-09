@@ -70,7 +70,7 @@ const EditNoteModal = ({ note, onClose, team }) => {
                 <h2 className="text-lg font-semibold text-white mb-4">Edit Task</h2>
                 <p className={`${errClass} text-red-500 mb-4`}>{errContent}</p>
 
-                <label className="block text-gray-300 text-sm mt-3 mb-1">Assign to:</label>
+                <label className="block text-gray-300 text-sm mt-3 mb-1" htmlFor='note-username'>Assign to:</label>
                 <select
                     id="note-username"
                     name="username"

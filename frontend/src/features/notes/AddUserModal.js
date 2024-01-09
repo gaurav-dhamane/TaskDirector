@@ -77,8 +77,9 @@ const AddUserModal = ({ teamId, onClose, modalRef }) => {
         {isSuccess && (
           <>
             <div className="mb-4">
-              <label className="block text-sm font-medium text-slate-700">Username</label>
+              <label className="block text-sm font-medium text-slate-700" htmlFor='user__name'>Username</label>
               <input
+                id='user__name'
                 type="text"
                 value={inputValue}
                 onChange={handleUsernameChange}
@@ -104,15 +105,17 @@ const AddUserModal = ({ teamId, onClose, modalRef }) => {
               )}
             </div>
             <div className="mb-4">
-              <label className="flex items-center">
+              <label className="flex items-center" htmlFor='check__box'>
+              </label>
                 <input
+                  id='check__box'
                   type="checkbox"
                   checked={addAsAdmin}
                   onChange={handleAddAsAdminChange}
                   className="form-checkbox"
                 />
                 <span className="ml-2 text-sm">Add as Admin</span>
-              </label>
+              
             </div>
             <button
               onClick={handleAddUser}
