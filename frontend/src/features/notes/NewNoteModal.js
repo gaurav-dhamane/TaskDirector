@@ -25,7 +25,8 @@ const NewNoteModal = ({ users, team, onClose }) => {
       setTitle('');
       setText('');
       setAssigned_to('');
-      onClose(); // Close the modal on success
+      onClose();
+      navigate(`/dash/notes/?teamId=${team}`);
     }
   }, [isSuccess, navigate, team, onClose]);
 
