@@ -10,6 +10,9 @@ router.route('/')
 router.route('/refresh')
     .get(authController.refresh)
 
+router.route('/register')
+    .post(authController.register);
+
 router.route('/logout')
     .post(authController.logout)
 

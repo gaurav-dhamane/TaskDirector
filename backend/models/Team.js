@@ -6,9 +6,15 @@ const teamSchema = new mongoose.Schema({
         unique: true,
         required: true
     },
-    password: {
-        type: String,
-        required: true
+    creator: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User',
+    },
+    admins:{
+        type: [mongoose.Schema.Types.ObjectId],
+        default: [],
+        ref:'User'
     },
     users: {
         type: [mongoose.Schema.Types.ObjectId],

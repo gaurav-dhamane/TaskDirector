@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { setCredentials } from '../../features/auth/authSlice'
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'https://taskdirector-api.onrender.com',
+    baseUrl: 'http://localhost:3500',
     credentials: 'include',
     prepareHeaders: (headers, { getState }) => {
         const token = getState().auth.token
@@ -15,9 +15,11 @@ const baseQuery = fetchBaseQuery({
 })
 
 const baseQueryWithReauth = async (args, api, extraOptions) => {
+    try{
     // console.log(args) // request url, method, body
     // console.log(api) // signal, dispatch, getState()
     // console.log(extraOptions) //custom like {shout: true}
+
 
     let result = await baseQuery(args, api, extraOptions)
 
@@ -45,10 +47,16 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
     }
 
     return result
+    }catch (error) {
+        // Handle errors, log, and rethrow if necessary
+        console.error("Error in baseQueryWithReauth:", error);
+        throw error;
+     }
+
 }
 
 export const apiSlice = createApi({
-    baseQuery: baseQueryWithReauth,
+    baseQuery: (args, api, extraOptions) => baseQueryWithReauth(args, api, extraOptions, baseQuery),
     tagTypes: ['Note', 'User'],
     endpoints: builder => ({})
-})
+ });

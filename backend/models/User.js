@@ -8,28 +8,30 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true
-    },
-    roles: {
-        type: [String],
-        default: ["Employee"]
+        required: true,
+        select: false
     },
     active: {
         type: Boolean,
         default: true
     },
+    admin_teams: {
+        type: [mongoose.Schema.Types.ObjectId],
+        default: [],
+        ref: 'Team'
+    },
+    teams: {
+        type: [mongoose.Schema.Types.ObjectId],
+        default: [],
+        ref: 'Team'
+    },
     notes: {
         type: [mongoose.Schema.Types.ObjectId],
         default: [],
         ref: 'Note'
-    },
-    team: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'Team'
     }
 },
-{ collection: 'users' }
+    { collection: 'users' }
 )
 
 module.exports = mongoose.model('User', userSchema)

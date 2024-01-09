@@ -2,21 +2,24 @@ import { Link } from 'react-router-dom'
 
 const Public = () => {
     const content = (
-        <section className="public h-screen bg-gradient-to-r from-indigo-300 via-sky-200 to-emerald-200 text-purple-900 ">
-            <div className="wrapper ">
-                <h1 className="typing-demo text-stone-900">
-                    Welcome to TaskDirector !
+        <section className="public h-screen bg-slate-800 text-green-400 flex flex-col ">
+            <div className="wrapper text-center ">
+                <h1 className="typing-demo text-green-500 text-4xl md:text-6xl font-bold">
+                    Welcome to TaskDirector!
                 </h1>
-                <p className='text-neutral-500 my-5 '>Simplifying task assignment for efficient teamwork.</p>
-                <p className='text-stone-900 text-center max-w-screen-lg mt-5'>Empower your team with a centralized platform where administrators can effortlessly assign and oversee tasks, while team members stay organized with clear, actionable directives. Experience streamlined collaboration, real-time updates, and enhanced productivity.</p>
-                <address className="text-stone-900 text-center my-5 ">
-                    Developer: Gaurav Dhamane<br />
+                <p className='text-slate-400 my-5 text-lg md:text-xl'>
+                    Simplifying task assignment for efficient teamwork.
+                </p>
+                <p className='text-slate-400 max-w-screen-md my-5 text-lg md:text-xl'>
+                    Empower your team with a centralized platform where administrators can effortlessly assign and oversee tasks, while team members stay organized with clear, actionable directives. Experience streamlined collaboration, real-time updates, and enhanced productivity.
+                </p>
+                <address className="text-slate-300 my-5 text-lg">
+                    Developer: Gaurav Dhamane
                 </address>
-
             </div>
-            <footer className='flex justify-center gap-2' >
-                <Link className=' flex px-4 py-2 text-stone-900 bg-emerald-600 rounded hover:bg-emerald-700 transition duration-300 ease-in-out' to="/login">User Login</Link>
-                <Link className='flex px-4 py-2 text-stone-900 bg-emerald-600 rounded hover:bg-emerald-700 transition duration-300 ease-in-out' to="/teams">Register Team</Link>
+            <footer className='flex flex-col md:flex-row justify-center gap-4 mt-8'>
+                <Link className='px-6 py-3 text-slate-900 bg-green-600 text-center rounded hover:bg-green-700 transition duration-300 ease-in-out text-lg' to="/login">Login</Link>
+                <Link className='px-6 py-3 text-slate-900 bg-green-600 text-center rounded hover:bg-green-700 transition duration-300 ease-in-out text-lg' to="/register">Register</Link>
             </footer>
         </section>
 

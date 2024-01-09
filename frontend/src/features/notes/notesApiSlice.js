@@ -62,10 +62,10 @@ export const notesApiSlice = apiSlice.injectEndpoints({
             ]
         }),
         deleteNote: builder.mutation({
-            query: ({ id }) => ({
+            query: ({ id, userId }) => ({
                 url: `/notes`,
                 method: 'DELETE',
-                body: { id }
+                body: { id, userId }
             }),
             invalidatesTags: (result, error, arg) => [
                 { type: 'Note', id: arg.id }

@@ -11,6 +11,7 @@ body {
   min-height: 100vh;
   animation: flyOut 1s ease-in-out;
   color-scheme: rgba(62, 39, 35, 0.719);
+  font-family: Calibri  ,sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -20,20 +21,28 @@ body {
 
 .title {
     font-family: 'Cookie';
-    /* font-size: 4vh; */
-    color: #3d275a;
 }
+
 
 
 ::-webkit-scrollbar {
     width: 0px;
 }
 
-.column-container {
 
+
+.info_circle--hidden{
+    display: none;
+}
+
+
+  
+  
+
+.column-container {
     display: flexbox;
-    column-count: 5; 
-    column-gap: 1vw; 
+    column-count: 4; 
+    column-gap: 2vw; 
     row-gap: 1vh;
     max-width:150vw; 
     min-height: 100vh;
@@ -61,6 +70,10 @@ body {
     font-size: 8vh;
 }
 
+textarea {
+    outline: none;
+    width:100%
+}
 
 
 
@@ -159,35 +172,11 @@ body {
     cursor: not-allowed;
   }
 
-  .custom-checkbox {
-    --checkbox-size: 1.25rem; /* Adjust the checkbox size as needed */
-    display: inline-block;
-    vertical-align: middle;
-    position: relative;
-    width: var(--checkbox-size);
-    height: var(--checkbox-size);
-    background-color: white;
-    border: 1px solid #4F46E5; /* Border color when unchecked */
-    border-radius: 0.25rem;
-    cursor: pointer;
-}
 
-.custom-checkbox::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: calc(var(--checkbox-size) * 0.6);
-    height: calc(var(--checkbox-size) * 0.6);
-    background-color: #4F46E5; /* Color when checked */
-    border-radius: 0.2rem;
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out;
-}
 
-.custom-checkbox input:checked::before {
-    opacity: 1;
+checkbox input:checked {
+    border-color: red;
+    background-color:red;
 }
 
 /* dash */
@@ -205,8 +194,24 @@ body {
     max-width: 100vw;
 }
 
+.nav-bar__show{
+    display: none;
+}
+
 
 @media screen and (max-width: 640px) {
+    .nav-bar__show{
+        display: flex;
+    }
+
+   .nav-bar{
+    position: absolute;
+    z-index: 50;
+    width: 40%;
+    top: 5vh;
+    right: 0%;
+   }
+      
     .column-container {
         column-count: 2;
     }

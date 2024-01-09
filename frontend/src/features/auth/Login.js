@@ -8,7 +8,7 @@ import useTitle from '../../hooks/useTitle';
 import PulseLoader from 'react-spinners/PulseLoader';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+import {  faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 const Login = () => {
     useTitle('Employee Login');
@@ -65,27 +65,22 @@ const Login = () => {
     if (isLoading) return <PulseLoader color={'#FFF'} />;
 
     const content = (
-        <section className="login min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-300 from-10% via-sky-300 via-30% to-emerald-300 to-90%">
+        <section className="login min-h-screen flex items-center justify-center bg-slate-800">
 
-            <main className="login p-8 rounded-md shadow-md bg-gradient-to-r from-indigo-300 via-sky-200 to-emerald-200 text-purple-900">
+            <main className="login p-8 w-96 rounded-md shadow-md bg-slate-700 text-green-200">
 
                 <form className="form" onSubmit={handleSubmit}>
 
-                    <h1 className="text-2xl mb-4 text-stone-900">User Login</h1>
+                    <h1 className="text-2xl mb-4 ">User Login</h1>
 
-                    <div className="top-info flex items-center mb-4 text-stone-900">
-                        <FontAwesomeIcon icon={faInfoCircle} className="info-icon" />
-                        <span className="tooltiptext text-stone-900 ml-2">
-                            For admin login, use Teamname-admin as the username; change it later.
-                        </span>
-                    </div>
+                    
                     <p ref={errRef} className={`error-message ${errClass}`} aria-live="assertive">
                         <FontAwesomeIcon icon={faExclamationTriangle} className="text-secondary-color" />
                         <span className="ml-1">{errMsg}</span>
                     </p>
-                    <label htmlFor="username" className="block text-sm font-medium text-stone-900 mt-2">Username:</label>
+                    <label htmlFor="username" className="block text-sm font-medium  mt-2">Username:</label>
                     <input
-                        className="form__input border rounded-md py-2 px-3 mt-1 w-full"
+                        className="form__input text-green-900 border rounded-md py-2 px-3 mt-1 w-full"
                         type="text"
                         id="username"
                         ref={userRef}
@@ -95,9 +90,9 @@ const Login = () => {
                         required
                     />
 
-                    <label htmlFor="password" className="block text-sm font-medium text-stone-900 mt-2">Password:</label>
+                    <label htmlFor="password" className="block text-sm font-medium  mt-2">Password:</label>
                     <input
-                        className="form__input border rounded-md py-2 px-3 mt-1 w-full"
+                        className="form__input text-green-900 border rounded-md py-2 px-3 mt-1 w-full"
                         type="password"
                         id="password"
                         onChange={handlePwdInput}
@@ -114,13 +109,13 @@ const Login = () => {
                             id="checked-checkbox"
                             className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-blue-500 checked:bg-blue-600 checked:border-transparent"
                         />
-                        <label htmlFor=".custom-checkbox " className="ms-2 text-sm font-medium text-stone-900">Trust This Device</label>
+                        <label htmlFor=".custom-checkbox " className="ms-2 text-sm font-medium ">Trust This Device</label>
                     </div>
 
 
 
                     <section className='two__button mt-6 '>
-                        <button className='flex px-4 py-2 text-stone-900 bg-emerald-500 rounded hover:bg-emerald-600 transition duration-300 ease-in-out' >Sign In</button>
+                        <button className='flex px-4 py-2  bg-green-500 rounded hover:bg-green-600 transition duration-300 ease-in-out' >Sign In</button>
                     </section>
 
                 </form>
